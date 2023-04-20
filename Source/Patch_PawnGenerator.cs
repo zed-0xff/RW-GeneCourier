@@ -44,6 +44,7 @@ namespace zed_0xff.LoftBed {
         }
     }
 
+    // add small chance of pawn in ancient cryptosleep pod to be a gene courier, probably with some another archite gene
     // runs on map generation
     [HarmonyPatch(typeof(ThingSetMaker_MapGen_AncientPodContents), "Generate")]
     static class Patch_Generate

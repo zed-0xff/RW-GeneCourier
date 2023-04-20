@@ -4,6 +4,8 @@ using HarmonyLib;
 using RimWorld;
 
 namespace zed_0xff.GeneCourier {
+
+    // transfer info about source genepacks from a Xenogerm to a pawn's gene
     [HarmonyPatch(typeof(GeneUtility), nameof(GeneUtility.ImplantXenogermItem))]
     static class Patch_ImplantXenogermItem
     {
