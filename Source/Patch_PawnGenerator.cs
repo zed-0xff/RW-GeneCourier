@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections.Generic;
 
-namespace zed_0xff.LoftBed {
+namespace zed_0xff.GeneCourier {
 
-    // add small chance of pawn to be a gene courier
+    // add small chance of space refugee to be a gene courier
     [HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn), new[] {typeof(PawnGenerationRequest)})]
     static class Patch_GeneratePawn
     {
@@ -21,7 +21,7 @@ namespace zed_0xff.LoftBed {
             if( request.ForcedXenogenes != null && request.ForcedXenogenes.Any() )
                 return;
 
-            if( Rand.Value > 0.01f )
+            if( Rand.Value > ModConfig.Settings.probSpaceRefugee )
                 return;
 
             int nToAdd = new IntRange(5, 10).RandomInRange;
@@ -66,7 +66,7 @@ namespace zed_0xff.LoftBed {
                 if( t is Pawn pawn && pawn.Faction == Faction.OfAncients ){
                     // non-hostile ancient
 
-                    if( Rand.Value > 0.02f )
+                    if( Rand.Value > ModConfig.Settings.probAncient )
                         continue;
 
                     pawn.genes.AddGene(geneCourier, true);
