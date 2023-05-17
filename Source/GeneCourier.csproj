@@ -3,19 +3,19 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>zed.0xff.GeneCourier</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <OutputPath>../Assemblies</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>../Assemblies</OutputPath>
-    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>../Assemblies</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.2.2" />
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>
