@@ -69,10 +69,14 @@ namespace zed_0xff.GeneCourier {
 
             for (int i = 0; i < 100; i++) {
                 IntVec3 c;
+#if RW15
+                CellFinder.TryFindRandomReachableNearbyCell(pos, map, 2, TraverseParms.For(TraverseMode.NoPassClosedDoors, Danger.Deadly, false), null, null, out c);
+#else
                 CellFinder.TryFindRandomReachableCellNear(pos, map, 2, TraverseParms.For(TraverseMode.NoPassClosedDoors, Danger.Deadly, false), null, null, out c);
+#endif
                 FilthMaker.TryMakeFilth(c, map, ThingDefOf.Filth_Blood);
             }
-            SoundDefOf.Hive_Spawn.PlayOneShot(new TargetInfo(pos, map, false));
+            SoundDef.Named("Hive_Spawn").PlayOneShot(new TargetInfo(pos, map, false));
 
             foreach( Genepack gp in genepacksToSpawn ){
                 GenPlace.TryPlaceThing(gp, pos, map, ThingPlaceMode.Near);
